@@ -3,7 +3,7 @@ require './person'
 class Student < Person
   attr_reader :classrom
 
-  def initialize(classrom, age, parent_permission = true, name = 'Unknown')
+  def initialize(classrom, age, name = 'Unknown', parent_permission: true)
     super(age, parent_permission, name)
     @classrom = classrom
   end
