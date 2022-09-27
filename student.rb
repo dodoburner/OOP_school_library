@@ -12,7 +12,7 @@ class Student < Person
   end
 
   def add_classrom(classrom)
-    @classrom =classrom
+    @classrom = classrom
     classrom.students.push(self) unless classrom.students.include?(self)
   end
 end
