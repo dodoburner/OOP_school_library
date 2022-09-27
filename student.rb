@@ -3,12 +3,16 @@ require './person'
 class Student < Person
   attr_reader :classrom
 
-  def initialize(classrom, age, name = 'Unknown', parent_permission = true)
+  def initialize(age, name = 'Unknown', parent_permission = true)
     super(age, parent_permission, name)
-    @classrom = classrom
   end
 
   def play_hooky
     "¯\(ツ)/¯"
+  end
+
+  def add_classrom(classrom)
+    @classrom =classrom
+    classrom.students.push(self) unless classrom.students.include?(self)
   end
 end
