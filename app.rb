@@ -6,21 +6,21 @@ require './rental'
 class App
   attr_reader :people, :books, :rentals
 
-  def initialize()
+  def initialize
     @people = []
     @books = []
     @rentals = []
   end
 
-  def list_all_books()
+  def list_all_books
     @books.each { |b| puts "Title: #{b.title}, Author: #{b.author}" }
   end
 
-  def list_all_people()
+  def list_all_people
     @people.each { |p| puts "[#{p.class}] Name: #{p.name}, ID: #{p.id}, Age: #{p.age}" }
   end
 
-  def parent_permission?()
+  def parent_permission?
     print 'Has parent permission? [Y/N]: '
     parent_permission = gets.chomp.capitalize
     case parent_permission
@@ -36,7 +36,7 @@ class App
     parent_permission
   end
 
-  def person_choice()
+  def person_choice
     print 'Do you want to create a student (1) or a teacher (2)? [Input the number]: '
     answer = gets.chomp.to_i
     if [1, 2].include?(answer)
@@ -47,7 +47,7 @@ class App
     end
   end
 
-  def create_a_person()
+  def create_a_person
     answer = person_choice
     print 'Age: '
     age = gets.chomp
@@ -66,7 +66,7 @@ class App
     puts 'Person created successfully'
   end
 
-  def create_a_book()
+  def create_a_book
     print 'Title: '
     title = gets.chomp
 
@@ -78,7 +78,7 @@ class App
     puts 'Book created successfully'
   end
 
-  def create_a_rental()
+  def create_a_rental
     puts 'Select a book from the following list by number'
     @books.each_with_index { |b, i| puts "#{i}) Title: #{b.title}, Author: #{b.author}" }
     index = gets.to_i
@@ -99,7 +99,7 @@ class App
     puts 'Rental created successfully'
   end
 
-  def list_all_rentals_for_a_given_person_id()
+  def list_all_rentals_for_a_given_person_id
     print 'ID of person: '
     id = gets.chomp.to_i
 
@@ -140,7 +140,7 @@ class App
     end
   end
 
-  def return_error()
+  def return_error
     puts 'Please enter a valid input'
   end
 end
