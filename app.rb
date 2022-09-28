@@ -70,11 +70,24 @@ def create_a_rental()
   print "Date: "
   date = gets.chomp
 
-  $rentals << Rental.new(date, book, person)
+  rental = Rental.new(date, book, person)
+  rental.add_book(book, person)
+  $rentals << rental
 
   puts 'Rental created successfully'
 end
 
 def list_all_rentals_for_a_given_person_id()
+  print "ID of person: "
+  id = gets.chomp.to_i
+
+  person = $people.select { |p| p.id == id }
+
+  puts "Rentals: #{
+    person[0].rentals.each do |r|
+      puts "Date: #{r.date}, Book #{r.book.title} by #{r.book.author}" 
+    end
+  }"
+
 end
 
