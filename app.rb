@@ -88,6 +88,4 @@ def list_all_rentals_for_a_given_person_id()
       puts "Date: #{r.date}, Book #{r.book.title} by #{r.book.author}" 
     end
   }"
-
 end
-
