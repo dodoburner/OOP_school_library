@@ -1,9 +1,11 @@
 require './student.rb'
 require './teacher.rb'
 require './book.rb'
+require './rental.rb'
 
 $people = []
 $books = []
+$rentals = []
 
 def list_all_books()
   $books.each { |b| puts "Title: #{b.title}, Author: #{b.author}" }
@@ -55,7 +57,24 @@ def create_a_book()
 end
 
 def create_a_rental()
+  puts 'Select a book from the following list by number'
+  $books.each_with_index { |b, i| puts "#{i}) Title: #{b.title}, Author: #{b.author}" }
+  index = gets.to_i
+  book = $books[index]
+
+  puts 'Select a person from the following list by number (not id)'
+  $people.each_with_index { |p, i| puts "#{i}) [#{p.class}] Name: #{p.name}, ID: #{p.id}, Age: #{p.age}" }
+  index = gets.to_i
+  person = $people[index]
+
+  print "Date: "
+  date = gets.chomp
+
+  $rentals << Rental.new(date, book, person)
+
+  puts 'Rental created successfully'
 end
 
 def list_all_rentals_for_a_given_person_id()
 end
+
