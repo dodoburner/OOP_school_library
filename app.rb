@@ -83,9 +83,8 @@ def list_all_rentals_for_a_given_person_id()
 
   person = $people.select { |p| p.id == id }
 
-  puts "Rentals: #{
-    person[0].rentals.each do |r|
-      puts "Date: #{r.date}, Book #{r.book.title} by #{r.book.author}" 
-    end
-  }"
+  puts 'Rentals:' 
+  person[0].rentals.each do |r|
+    puts "Date: #{r.date}, Book #{r.book.title} by #{r.book.author}" 
+  end
 end
