@@ -4,7 +4,7 @@ class Student < Person
   attr_reader :classrom
 
   def initialize(age, name = 'Unknown', parent_permission = true)
-    super(age, parent_permission, name)
+    super(age, name, parent_permission)
   end
 
   def play_hooky
