@@ -8,7 +8,7 @@ def main(app = App.new)
     app.return_error
   end
 
-  main(app) unless input == 7
+  main(app)
 end
 
 main
