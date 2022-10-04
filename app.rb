@@ -3,21 +3,15 @@ require './teacher'
 require './book'
 require './rental'
 
-class App
-  attr_reader :people, :books, :rentals
+class People
+  attr_accessor :people
 
   def initialize
-    @people = []
-    @books = []
-    @rentals = []
-  end
-
-  def list_all_books
-    @books.each { |b| puts "Title: #{b.title}, Author: #{b.author}" }
+    @list = []
   end
 
   def list_all_people
-    @people.each { |p| puts "[#{p.class}] Name: #{p.name}, ID: #{p.id}, Age: #{p.age}" }
+    @list.each { |p| puts "[#{p.class}] Name: #{p.name}, ID: #{p.id}, Age: #{p.age}" }
   end
 
   def parent_permission?
@@ -57,14 +51,79 @@ class App
     case answer
     when 1
       parent_permission = parent_permission?
-      @people << Student.new(age, name, parent_permission)
+      @list << Student.new(age, name, parent_permission)
     when 2
       print 'Specialization: '
       specialization = gets.chomp
-      @people << Teacher.new(specialization, age, name)
+      @list << Teacher.new(specialization, age, name)
     end
     puts 'Person created successfully'
   end
+end
+
+
+class App
+  attr_reader :people, :books, :rentals
+
+  def initialize(people = People.new)
+    @people = people
+    @books = []
+    @rentals = []
+  end
+
+  def list_all_books
+    @books.each { |b| puts "Title: #{b.title}, Author: #{b.author}" }
+  end
+
+  # def list_all_people
+  #   @people.each { |p| puts "[#{p.class}] Name: #{p.name}, ID: #{p.id}, Age: #{p.age}" }
+  # end
+
+  # def parent_permission?
+  #   print 'Has parent permission? [Y/N]: '
+  #   parent_permission = gets.chomp.capitalize
+  #   case parent_permission
+  #   when 'Y'
+  #     parent_permission = true
+  #   when 'N'
+  #     parent_permission = false
+  #   else
+  #     puts 'Please enter a valid input'
+  #     parent_permission?
+  #   end
+
+  #   parent_permission
+  # end
+
+  # def person_choice
+  #   print 'Do you want to create a student (1) or a teacher (2)? [Input the number]: '
+  #   answer = gets.chomp.to_i
+  #   if [1, 2].include?(answer)
+  #     answer
+  #   else
+  #     puts 'Please enter a valid value (1 or 2)'
+  #     person_choice
+  #   end
+  # end
+
+  # def create_a_person
+  #   answer = person_choice
+  #   print 'Age: '
+  #   age = gets.chomp
+  #   print 'Name: '
+  #   name = gets.chomp
+
+  #   case answer
+  #   when 1
+  #     parent_permission = parent_permission?
+  #     @people << Student.new(age, name, parent_permission)
+  #   when 2
+  #     print 'Specialization: '
+  #     specialization = gets.chomp
+  #     @people << Teacher.new(specialization, age, name)
+  #   end
+  #   puts 'Person created successfully'
+  # end
 
   def create_a_book
     print 'Title: '
@@ -116,9 +175,9 @@ class App
     when 1
       list_all_books
     when 2
-      list_all_people
+      @people.list_all_people
     when 3
-      create_a_person
+      @people.create_a_person
     when 4
       create_a_book
     when 5
