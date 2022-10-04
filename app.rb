@@ -111,18 +111,6 @@ class App
     end
   end
 
-  def query_method
-    puts "Please choose an option by entering a number: \n
-    1 - List all books \n
-    2 - List all people \n
-    3 - Create a person \n
-    4 - Create a book \n
-    5 - Create a rental \n
-    6 - List all rentals for a given person id \n
-    7 - exit "
-    gets.to_i
-  end
-
   def return_method(input)
     case input
     when 1
