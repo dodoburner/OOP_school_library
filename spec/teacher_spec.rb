@@ -1,7 +1,7 @@
 require_relative '../teacher'
 
 describe Teacher do
-  let(:teacher) { Teacher.new('Math', 18, 'John' ) }
+  let(:teacher) { Teacher.new('Math', 18, 'John') }
 
   describe '#new' do
     it 'creates a new teacher' do

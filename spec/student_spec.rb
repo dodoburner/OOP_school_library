@@ -4,7 +4,7 @@ require_relative '../classrom'
 describe Student do
   # the let method is used to create a variable that can be used in the tests
   let(:student) { Student.new(18, 'John') }
-  let(:classrom) {Classrom.new('Classrom A') }
+  let(:classrom) { Classrom.new('Classrom A') }
 
   describe '#new' do
     it 'creates a new student' do
